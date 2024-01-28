@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>meworld</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #logo {
+            width: 150px;
+            height: auto;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: black; /* デフォルトの色 */
+            transition: color 0.3s; /* 色の変化を滑らかに */
+        }
+        #login-button, #dark-mode-button {
+            margin-right: 20px;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+        .dark-mode nav ul li a {
+            color: white; /* ダークモード時の色 */
+        }
+        .dark-mode #logo {
+            content: url('full.svg'); /* ダークモード時のロゴ */
+        }
+        #login-button, #dark-mode-button {
+            margin-right: 20px;
+            background-color: #555;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        #login-button:hover, #dark-mode-button:hover {
+            background-color: #333;
+        }
+    </style>
+    <header>
+        <img src="full_black.svg" alt="meworld logo" id="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button id="dark-mode-button" onclick="toggleDarkMode()">
+                <img src="dark_mode_icon.svg" alt="Dark" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 5px;">
+                Dark
+            </button>
+            <button id="login-button" onclick="location.href='index.html'">
+                <img src="signin.svg" alt="Sign in" style="width: 15px; height: 15px; vertical-align: middle; margin-right: 5px;">
+                Sign in
+            </button>
+        </div>
+    </header>
+</head>
+<body>
+    <h1 style="text-align: center;">CONTACT</h1>
+    <h2 style="text-align: center; font-size: medium;">e-mail</h2>
+    <button id="email-button" onclick="location.href='mailto:contact@meworld.xyz'" style="margin-top: 20px; background-color: #007bff; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s ease; margin: 0 auto; display: block;">
+        contact@meworld.xyz
+    </button>
+    <h2 style="text-align: center; font-size: medium;">Xのダイレクトメッセージ</h2>
+    <button id="dm-button" onclick="location.href='https://x.com/tencie_'" style="margin-top: 20px; background-color: #007bff; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s ease; margin: 0 auto; display: block;">
+        @tencie_
+    </button>
+    <h2 style="text-align: center; font-size: medium;">Discord</h2>
+    <button id="dm-button" onclick="location.href='https://discord.gg/ZC6vbkXA'" style="margin-top: 20px; background-color: #007bff; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; border-radius: 5px; transition: background-color 0.3s ease; margin: 0 auto; display: block;">
+        meworld</button>
+        <hr>
+        <footer style="text-align: center;"> ©︎ 2024 meworld, Inc.</footer>
+        
+    </style>
+    <div id="slideshow-container" style="position: relative; max-width: 100%; height: auto; border-radius: 10px; overflow: hidden;">
+        <div id="slideshow" style="position: relative; width: 300%; height: auto;">
+            <img src="" alt="" class="slide" style="width: 33.33%; height: auto; float: left;">
+        </div>
+    </div>
+    <style>
+        .slide {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+    </style>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("slide");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+        setInterval(function() { plusSlides(1); }, 5000); // Change image every 5 seconds
+
+        function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle("dark-mode");
+        }
+
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            toggleDarkMode();
+        }
+    </script>
+</body>
+</html>
